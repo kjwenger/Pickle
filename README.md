@@ -20,6 +20,8 @@ Table of Contents:
     * [Step Resources](#step-resources)
     * [Feature Resources](#feature-resources)
   * [Futures](#futures)
+  * [Languages](#languages)
+    * [Kotlin](#kotlin)
 <!-- TOC -->
 
 # Pickle
@@ -80,3 +82,7 @@ This is a {{myAttribute}} template.
 ### Feature Resources
 
 ## Futures
+
+## Languages
+
+### Kotlin
