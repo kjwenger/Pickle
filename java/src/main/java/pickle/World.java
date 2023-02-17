@@ -36,9 +36,9 @@ public class World {
 
         @Override
         public int compareTo(final Key key) {
-            int comparedClass =
+            final int compared =
                     compareClass(key != null ? key.forClass() : null);
-            if (comparedClass != 0) return comparedClass;
+            if (compared != 0) return compared;
             return compareName(key != null ? key.forName() : null);
         }
 
@@ -91,6 +91,19 @@ public class World {
         return null;
     }
 
+    public <CLASS> CLASS lazyGetObject(
+            final Class<CLASS> forClass, final String forName)
+            throws InstantiationException, IllegalAccessException,
+            InvocationTargetException, NoSuchMethodException {
+        CLASS object = getObject(forClass, forName);
+        if (object == null) {
+            final Constructor<CLASS> constructor = forClass.getConstructor();
+            object = constructor.newInstance();
+            putObject(forClass, forName, object);
+        }
+        return object;
+    }
+
     @SuppressWarnings("unchecked")
     public <CLASS> List<CLASS> getObjects(final Class<CLASS> forClass) {
         final List<CLASS> objects = new ArrayList<>();
@@ -103,19 +116,6 @@ public class World {
     public <CLASS> void putObject(
             final Class<CLASS> forClass, final CLASS object) {
         objectMap.put(new Key(forClass), object);
-    }
-
-    public <CLASS> CLASS lazyGetObject(
-            final Class<CLASS> forClass, final String forName)
-            throws InstantiationException, IllegalAccessException,
-            InvocationTargetException, NoSuchMethodException {
-        CLASS object = getObject(forClass, forName);
-        if (object == null) {
-            final Constructor<CLASS> constructor = forClass.getConstructor();
-            object = constructor.newInstance();
-            putObject(forClass, forName, object);
-        }
-        return object;
     }
 
     public <CLASS> void putObject(
