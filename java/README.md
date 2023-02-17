@@ -14,14 +14,12 @@ Maybe, a much-needed extension to
 
 ## Build
 
-### Unix
-
 ```bash
-./mvnw install
+mvn install --define skipTests
 ```
 
-# Windows
+## Test
 
-```cmd
-mvnw install
+```bash
+mvn test
 ```

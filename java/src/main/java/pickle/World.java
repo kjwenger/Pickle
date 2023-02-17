@@ -82,11 +82,22 @@ public class World {
     }
 
     @SuppressWarnings("unchecked")
-    public <CLASS> CLASS getObject(Class<CLASS> forClass, String forName) {
+    public <CLASS> CLASS getObject(
+            final Class<CLASS> forClass, final String forName) {
         final CLASS object = (CLASS) objectMap.get(new Key(forClass, forName));
         if (object != null) return object;
         for (Map.Entry<Key, Object> mapEntry : objectMap.entrySet())
             if (forClass.isAssignableFrom(mapEntry.getKey().forClass()))
+                return (CLASS) mapEntry.getValue();
+        return null;
+    }
+
+    @SuppressWarnings("unchecked")
+    public <CLASS> CLASS getObject(final String forName) {
+        final CLASS object = (CLASS) objectMap.get(new Key(forName));
+        if (object != null) return object;
+        for (Map.Entry<Key, Object> mapEntry : objectMap.entrySet())
+            if (forName.equals(mapEntry.getKey().forName()))
                 return (CLASS) mapEntry.getValue();
         return null;
     }
@@ -122,6 +133,12 @@ public class World {
             final Class<CLASS> forClass, final String forName,
             final CLASS object) {
         objectMap.put(new Key(forClass, forName), object);
+    }
+
+    public <CLASS> void putObject(
+            final String forName,
+            final CLASS object) {
+        objectMap.put(new Key(null, forName), object);
     }
 
     public <CLASS> void removeObject(final Class<CLASS> forClass) {

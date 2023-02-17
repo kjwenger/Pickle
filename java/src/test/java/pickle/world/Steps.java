@@ -5,6 +5,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pickle.World;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class Steps {
@@ -19,13 +20,13 @@ public class Steps {
         assertNotNull(world);
     }
     @When("I set the object named {string} to {string}")
-    public void i_set_the_object_named_to(String string, String string2) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void i_set_the_object_named_to(
+            final String name, final String value) {
+        world.putObject(name, value);
     }
     @Then("I should get the object named {string} as {string}")
-    public void i_should_get_the_object_named_as(String string, String string2) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void i_should_get_the_object_named_as(
+            final String name, final String expected) {
+        assertEquals(expected, world.getObject(name));
     }
 }
