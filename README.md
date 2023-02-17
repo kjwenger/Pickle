@@ -1,28 +1,6 @@
-Table of Contents:
+![example workflow](https://github.com/kjwenger/Pickle/actions/workflows/main.yml/badge.svg)
 
-<!-- TOC -->
-* [Pickle](#pickle)
-  * [Contexts](#contexts)
-    * [PicoContainer](#picocontainer)
-  * [Preprocessing](#preprocessing)
-  * [Variables](#variables)
-    * [Simple](#simple)
-    * [Environment](#environment)
-    * [Typed](#typed)
-  * [Multiline](#multiline)
-  * [Interpolations](#interpolations)
-  * [Regular Expressions](#regular-expressions)
-  * [Templates](#templates)
-  * [Embedding](#embedding)
-    * [Yaml](#yaml)
-    * [JavaScript](#javascript)
-  * [Resources](#resources)
-    * [Step Resources](#step-resources)
-    * [Feature Resources](#feature-resources)
-  * [Futures](#futures)
-  * [Languages](#languages)
-    * [Kotlin](#kotlin)
-<!-- TOC -->
+[TOC]
 
 # Pickle
 Maybe, a much-needed extension to
