@@ -1,6 +1,4 @@
-![example workflow](https://github.com/kjwenger/Pickle/actions/workflows/main.yml/badge.svg)
-
-[TOC]
+CircleCI: [![CircleCI](https://dl.circleci.com/status-badge/img/gh/kjwenger/Pickle/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/kjwenger/Pickle/tree/main)
 
 # Pickle
 Maybe, a much-needed extension to
