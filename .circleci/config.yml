@@ -16,8 +16,9 @@ jobs:
       - image: cimg/node:18.14.1
     steps:
       - checkout
-      - node/install-packages:
-          pkg-manager: npm
+      - run:
+          name: Install packages
+          command: npm install
       - run:
           name: Run tests
           command: npm test
