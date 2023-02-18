@@ -1,6 +1,6 @@
 const assert = require('assert')
 const world = require('../world')
-const {When, Then} = require('cucumber')
+const {When, Then} = require('@cucumber/cucumber')
 
 When('I set the World object {string} to {string}', function (keyString, valueString) {
     world[keyString] = valueString
