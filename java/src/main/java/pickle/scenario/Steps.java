@@ -35,7 +35,8 @@ public class Steps {
             final String keyString) throws ClassNotFoundException {
         final Scenario scenario = world.getObject(Scenario.class);
         assertNotNull(scenario);
-        final World.Key key = World.Key.forString(keyString);
+        World.Key key = World.Key.forString(keyString);
+        key = new World.Key(String.class, key.forName());
         world.putObject(key, scenario.getName());
     }
 

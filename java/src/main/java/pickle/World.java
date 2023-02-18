@@ -101,23 +101,21 @@ public class World {
 
     @SuppressWarnings("unchecked")
     public <CLASS> CLASS getObject(final Class<CLASS> forClass) {
+        if (forClass == null) return null;
         final CLASS object = (CLASS) objectMap.get(new Key(forClass));
         if (object != null) return object;
         for (Map.Entry<Key, Object> mapEntry : objectMap.entrySet())
-            if (forClass.isAssignableFrom(mapEntry.getKey().forClass()))
-                return (CLASS) mapEntry.getValue();
+            if (mapEntry.getKey().forClass() != null)
+                if (forClass.isAssignableFrom(mapEntry.getKey().forClass()))
+                    return (CLASS) mapEntry.getValue();
         return null;
     }
 
     @SuppressWarnings("unchecked")
     public <CLASS> CLASS getObject(
             final Class<CLASS> forClass, final String forName) {
-        final CLASS object = (CLASS) objectMap.get(new Key(forClass, forName));
-        if (object != null) return object;
-        for (Map.Entry<Key, Object> mapEntry : objectMap.entrySet())
-            if (forClass.isAssignableFrom(mapEntry.getKey().forClass()))
-                return (CLASS) mapEntry.getValue();
-        return null;
+        final Key key = new Key(forClass, forName);
+        return (CLASS) getObject(key);
     }
 
     @SuppressWarnings("unchecked")
@@ -131,12 +129,27 @@ public class World {
         return null;
     }
 
+    @SuppressWarnings("UnnecessaryContinue")
     public Object getObject(final Key key) {
+        if (key == null) return null;
+        final String forName = key.forName();
+        final Class<?> forClass = key.forClass();
         final Object object = objectMap.get(key);
         if (object != null) return object;
-//        for (Map.Entry<Key, Object> mapEntry : objectMap.entrySet())
-//            if (forName.equals(mapEntry.getKey().forName()))
-//                return (CLASS) mapEntry.getValue();
+        for (Map.Entry<Key, Object> mapEntry : objectMap.entrySet())
+            if (forName != null)
+                if (forName.equals(mapEntry.getKey().forName()))
+                    if (forClass == null)
+                        return mapEntry.getValue();
+                    else if (mapEntry.getKey().forClass() != null)
+                        if (forClass.isAssignableFrom(
+                                mapEntry.getKey().forClass()))
+                            return mapEntry.getValue();
+                        else continue;
+                    else continue;
+                else continue;
+            else if (forClass != null)
+                return getObject(forClass);
         return null;
     }
 
