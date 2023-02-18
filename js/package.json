@@ -23,7 +23,7 @@
     "url": "https://github.com/kjwenger/Pickle/issues"
   },
   "homepage": "https://github.com/kjwenger/Pickle#readme",
-  "devDependencies": {
+  "dependencies": {
     "@cucumber/cucumber": "^8.11.1",
     "assert": "^2.0.0",
     "chai": "^4.3.7",
