@@ -1,3 +1,5 @@
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/kjwenger/Pickle/tree/main.svg?style=shield)](https://dl.circleci.com/status-badge/redirect/gh/kjwenger/Pickle/tree/main)
+
 Table of Contents:
 
 <!-- TOC -->
