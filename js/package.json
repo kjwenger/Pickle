@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "npx eslint",
-    "cucumber": "npx cucumber-js",
+    "cucumber": "cucumber-js",
     "test": "npm run lint && npm run cucumber"
   },
   "repository": {
