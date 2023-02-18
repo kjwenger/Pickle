@@ -1,5 +1,3 @@
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/kjwenger/Pickle/tree/main.svg?style=shield)](https://dl.circleci.com/status-badge/redirect/gh/kjwenger/Pickle/tree/main)
-
 Table of Contents:
 
 <!-- TOC -->
@@ -14,6 +12,8 @@ Table of Contents:
   * [Test](#test)
     * [Unit/Component Test](#unitcomponent-test)
     * [Integration Test](#integration-test)
+  * [Deploy](#deploy)
+    * [Distribution Management](#distribution-management)
   * [Contexts](#contexts)
     * [PicoContainer](#picocontainer)
       * [PicoContainer Dependency](#picocontainer-dependency)
@@ -133,6 +133,63 @@ They should be run at critical steps such as pushing to shared repositories
 and on merging short-lived branches to long-lived ones.
 
 Therefore, they are run as *pre-commit git hook*.
+
+## Deploy
+The *Maven* project artifacts are deployed to *GitHub* for easy access
+according to this gist
+[Create a dedicated project to host your Maven repository on GitHub](
+https://gist.github.com/nealxyc/96267110f5156ac2ab12).
+
+### Distribution Management
+The following section in this **POM** set up how the *Maven* repository is
+deployed to locally to later be committed and pushed to the *GitHub* repository.
+
+```xml
+<project>
+    <!-- ... -->
+    <distributionManagement>
+        <repository>
+            <id>project.maven.repository</id>
+            <name>Maven Repository on GitHub</name>
+            <url>${project.baseUri}mvn-repository</url>
+        </repository>
+    </distributionManagement>
+    <!-- ... -->
+    <build>
+        <pluginManagement>
+            <plugins>
+              <!-- ... -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>3.0.0-M1</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+          <!-- ... -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <configuration>
+                    <altDeploymentRepository>project.maven.repository::default::${project.baseUri}mvn-repository</altDeploymentRepository>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+  <!-- ... -->
+</project>
+```
+
+The next steps deploy to the local repository [mvn-repository](./mvn-repository)
+and the commit and push it to the *GitHub* repository.
+
+```shell
+mvn deploy
+git add mvn-repository
+git commit mvn-repository -m "Deployed latest Maven Repository"
+git push
+```
 
 ## Contexts
 Contexts, often called the *World* object, provide shared state between steps.

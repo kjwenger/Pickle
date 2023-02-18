@@ -7,6 +7,18 @@
     <name>Pickle for Java</name>
     <description>Extending Cucumber/Gherkin for Java</description>
     <inceptionYear>2023</inceptionYear>
+    <scm>
+        <connection>scm:git:https://github.com/kjwenger/Pickle.git</connection>
+        <developerConnection>scm:git:git@github.com:kjwenger/Pickle.git</developerConnection>
+        <url>https://github.com/kjwenger/Pickle.git</url>
+    </scm>
+    <distributionManagement>
+        <repository>
+            <id>project.maven.repository</id>
+            <name>Maven Repository on GitHub</name>
+            <url>${project.baseUri}mvn-repository</url>
+        </repository>
+    </distributionManagement>
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
@@ -90,6 +102,11 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>3.0.0-M1</version>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>3.0.0-M1</version>
+                </plugin>
             </plugins>
         </pluginManagement>
         <plugins>
@@ -157,11 +174,11 @@
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <executions>
                     <execution>
-                        <phase>integration-test</phase>
                         <goals>
                             <goal>integration-test</goal>
                             <goal>verify</goal>
                         </goals>
+                        <phase>integration-test</phase>
                         <configuration>
                             <includes>
                                 <include>pickle/IntegrationSuite.java</include>
@@ -169,6 +186,13 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <configuration>
+                    <altDeploymentRepository>project.maven.repository::default::${project.baseUri}mvn-repository</altDeploymentRepository>
+                </configuration>
             </plugin>
         </plugins>
     </build>
