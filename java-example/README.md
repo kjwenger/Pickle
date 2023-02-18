@@ -2,6 +2,7 @@ Table of Contents:
 
 <!-- TOC -->
 * [Pickle for Java Example](#pickle-for-java-example)
+  * [Glossary](#glossary)
   * [Usage](#usage)
     * [Repository](#repository)
     * [Dependency](#dependency)

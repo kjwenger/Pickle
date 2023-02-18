@@ -11,6 +11,8 @@ Table of Contents:
     * [Clone Repository](#clone-repository)
     * [Hooks](#hooks)
   * [Build](#build)
+  * [Test](#test)
+  * [Deploy](#deploy)
   * [Contexts](#contexts)
     * [Contexts for Java](#contexts-for-java)
   * [Preprocessing](#preprocessing)
