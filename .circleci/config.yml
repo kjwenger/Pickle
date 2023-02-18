@@ -1,6 +1,4 @@
 version: 2.1
-orbs:
-  node: circleci/node@5.0.2
 jobs:
   build-and-test-java:
     docker:
@@ -14,7 +12,8 @@ jobs:
           name: Run tests
           command: mvn --file java --batch-mode integration-test
   build-and-test-js:
-    executor: node/default
+    docker:
+      - image: cimg/node:18.14.1
     steps:
       - checkout
       - node/install-packages:
