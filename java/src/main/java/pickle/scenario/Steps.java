@@ -22,7 +22,7 @@ public class Steps {
 
     @BeforeStep
     public void beforeStep(final Scenario scenario) {
-        world.putObject(Scenario.class, scenario.getId(), scenario);
+        world.putObject(Scenario.class, scenario.getName(), scenario);
     }
 
     @AfterStep
