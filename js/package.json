@@ -4,7 +4,9 @@
   "description": "Extending Cucumber/Gherkin for JavaScript/Node.js",
   "main": "index.js",
   "scripts": {
-    "test": "npx eslint"
+    "lint": "npx eslint",
+    "cucumber": "npx cucumber-js",
+    "test": "npm run lint && npm run cucumber"
   },
   "repository": {
     "type": "git",
@@ -22,6 +24,13 @@
   },
   "homepage": "https://github.com/kjwenger/Pickle#readme",
   "devDependencies": {
+    "@cucumber/cucumber": "^8.11.1",
+    "assert": "^2.0.0",
+    "dotenv": "^16.0.3",
     "eslint": "^8.34.0"
+  },
+  "dependencies": {
+    "chai": "^4.3.7",
+    "cucumber": "^6.0.7"
   }
 }
