@@ -3,8 +3,7 @@ Table of Contents:
 <!-- TOC -->
 * [Pickle for Java](#pickle-for-java)
   * [Build](#build)
-    * [Unix](#unix)
-* [Windows](#windows)
+  * [Test](#test)
 <!-- TOC -->
 
 # Pickle for Java
@@ -14,12 +13,12 @@ Maybe, a much-needed extension to
 
 ## Build
 
-```bash
+```sh
 mvn install --define skipTests
 ```
 
 ## Test
 
-```bash
+```sh
 mvn test
 ```
