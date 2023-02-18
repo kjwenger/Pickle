@@ -105,10 +105,13 @@ in the regarding README file.
 For the *Java* projects, please refer to section [Test](./java/README.md#test)
 in the regarding README file.
 
-For a quick test drive, simply run;
-
+For a quick but complete test drive, simply run either *Maven* ...
 ```shell
-mvn test
+mvn test --profiles test-all
+```
+... or the *Node.js package manager* ...
+```shell
+mpm run test-all
 ```
 
 ## Deploy

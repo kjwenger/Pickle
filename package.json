@@ -1,10 +1,12 @@
 {
-  "name": "pickle-js",
+  "name": "pickle",
   "version": "0.0.1",
-  "description": "Extending Cucumber/Gherkin for JavaScript/Node.js",
+  "description": "Extending Cucumber/Gherkin",
   "main": "index.js",
   "scripts": {
-    "test": "npx eslint"
+    "test": "cd js && npm test",
+    "test-java": "mvn test",
+    "test-all": "concurrently --names 'Java,JavaScript' --prefix-colors 'yellow,blue' --kill-others 'npm run test-java' 'npm test'"
   },
   "repository": {
     "type": "git",
@@ -22,6 +24,6 @@
   },
   "homepage": "https://github.com/kjwenger/Pickle#readme",
   "devDependencies": {
-    "eslint": "^8.34.0"
+    "concurrently": "^7.6.0"
   }
 }
