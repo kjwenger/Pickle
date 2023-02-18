@@ -130,7 +130,7 @@ and on merging short-lived branches to long-lived ones.
 
 Therefore, they are run as *pre-commit git hook*.
 
-## Continuous Integration/Testing/Deployment (CI/CT/CD)
+## Continuous Integration/Deployment (CI/CD)
 An easy-to-use and partially free-to-use CI/CD system is
 [CircleCI](https://app.circleci.com/pipelines/github/kjwenger/Pickle).
 
