@@ -7,6 +7,11 @@
     <name>Pickle for Java</name>
     <description>Extending Cucumber/Gherkin for Java</description>
     <inceptionYear>2023</inceptionYear>
+    <scm>
+        <connection>scm:git:https://github.com/kjwenger/Pickle.git</connection>
+        <developerConnection>scm:git:git@github.com:kjwenger/Pickle.git</developerConnection>
+        <url>https://github.com/kjwenger/Pickle.git</url>
+    </scm>
     <distributionManagement>
         <repository>
             <id>project.maven.repository</id>
