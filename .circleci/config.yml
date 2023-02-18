@@ -8,10 +8,10 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Build
+          name: Build clean package
           command: mvn --file java --batch-mode --define skipTests clean package
       - run:
-          name: Test
+          name: Run tests
           command: mvn --file java --batch-mode integration-test
   build-and-test-js:
     executor: node/default
@@ -20,8 +20,8 @@ jobs:
       - node/install-packages:
           pkg-manager: npm
       - run:
-          command: npm test
           name: Run tests
+          command: npm test
 
 workflows:
   build-and-test:

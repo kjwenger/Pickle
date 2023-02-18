@@ -171,9 +171,8 @@ This example reuses the step definitions for dealing with the *World* object.
 ```gherkin
 Feature: World object
   Scenario: World objects
-    Given I have a World object
-    When I set the object named 'Key' to 'Value'
-    Then I should get the object named 'Key' as 'Value'
+    When I set the World object 'Key' to 'Value'
+    Then I should get the World object 'Key' as 'Value'
 ```
 
 ## Test
