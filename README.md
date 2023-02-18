@@ -5,6 +5,7 @@ Table of Contents:
 
 <!-- TOC -->
 * [Pickle](#pickle)
+  * [Glossary](#glossary)
   * [Contexts](#contexts)
     * [Contexts for Java](#contexts-for-java)
   * [Preprocessing](#preprocessing)
@@ -32,6 +33,10 @@ Table of Contents:
 Maybe, a much-needed extension to
 [Cucumber](https://cucumber.io/) and
 [Gherkin](https://cucumber.io/docs/gherkin/).
+
+## Glossary
+Please, for all acronyms and definitions used below, refer to:
+[Glossary](./Glossary.md)
 
 ## Contexts
 Contexts, often called the *World* object, provide shared state between steps.

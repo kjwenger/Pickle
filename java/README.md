@@ -2,6 +2,7 @@ Table of Contents:
 
 <!-- TOC -->
 * [Pickle for Java](#pickle-for-java)
+  * [Glossary](#glossary)
   * [Version Control](#version-control)
     * [Install Git](#install-git)
     * [Clone Repository](#clone-repository)
@@ -24,6 +25,10 @@ Table of Contents:
 Maybe, a much-needed extension to
 [Cucumber-JVM](https://cucumber.io/docs/installation/java/) and
 [Gherkin](https://cucumber.io/docs/gherkin/).
+
+## Glossary
+Please, for all acronyms and definitions used below, refer to:
+[Glossary](../Glossary.md)
 
 ## Version Control
 [Git](https://git-scm.com/) is **the** version control system these days,
