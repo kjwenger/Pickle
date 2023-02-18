@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "npx eslint",
     "cucumber": "npx @cucumber/cucumber",
-    "test": "npm run lint && npm run cucumber"
+    "test": "npm install && npm run lint && npm run cucumber"
   },
   "repository": {
     "type": "git",
