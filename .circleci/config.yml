@@ -1,17 +1,17 @@
 version: 2.1
 jobs:
-  build-and-test:
+  build-and-test-java:
     docker:
       - image: cimg/openjdk:11.0
     steps:
       - checkout
       - run:
           name: Build
-          command: mvn -f java -B -D skipTests clean package
+          command: mvn --file java --batch-mode --define skipTests clean package
       - run:
           name: Test
-          command: mvn -f java test
+          command: mvn --file java --batch-mode integration-test
 workflows:
   build-and-test:
     jobs:
-      - build-and-test
+      - build-and-test-java

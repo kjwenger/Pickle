@@ -22,7 +22,9 @@ Maybe, a much-needed extension to
 [Gherkin](https://cucumber.io/docs/gherkin/).
 
 ## Version Control
-[Git](https://git-scm.com/) is **the** version control system these days.
+[Git](https://git-scm.com/) is **the** version control system these days,
+and [GitHub](https://github.com/kjwenger/Pickle) one of the central repository
+sites of choice.
 
 ### Install Git
 To install *Git* on *Ubuntu/Debian* best run its package manager *Aptitude*.
@@ -127,3 +129,34 @@ They should be run at critical steps such as pushing to shared repositories
 and on merging short-lived branches to long-lived ones.
 
 Therefore, they are run as *pre-commit git hook*.
+
+## Continuous Integration/Testing/Deployment (CI/CT/CD)
+An easy-to-use and partially free-to-use CI/CD system is
+[CircleCI](https://app.circleci.com/pipelines/github/kjwenger/Pickle).
+
+It connects auto-magically to *GitHub* and provides low-hassle pipeline setup.
+
+After registration (best with *GitHub* *OAuth*), enabling the web hooks,
+all that remains is to check-mark a project for build and provide a **YAML**
+file that is even outlined by the system and has to be committed to the project
+as [.circleci/config.yaml](../.circleci/config.yml).
+
+```yaml
+version: 2.1
+jobs:
+  build-and-test-java:
+    docker:
+      - image: cimg/openjdk:11.0
+    steps:
+      - checkout
+      - run:
+          name: Build
+          command: mvn --file java --batch-mode --define skipTests clean package
+      - run:
+          name: Test
+          command: mvn --file java --batch-mode integration-test
+workflows:
+  build-and-test:
+    jobs:
+      - build-and-test-java
+```
