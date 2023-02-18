@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Pickle.iml" filepath="$PROJECT_DIR$/.idea/Pickle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/js/js.iml" filepath="$PROJECT_DIR$/js/js.iml" />
       <module fileurl="file://$PROJECT_DIR$/java/pickle-java.iml" filepath="$PROJECT_DIR$/java/pickle-java.iml" />
     </modules>
   </component>

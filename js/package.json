@@ -1,0 +1,24 @@
+{
+  "name": "pickle-js",
+  "version": "0.0.1",
+  "description": "Extending Cucumber/Gherkin for JavaScript/Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kjwenger/Pickle.git"
+  },
+  "keywords": [
+    "cucumber",
+    "gherkin",
+    "BDD"
+  ],
+  "author": "kjwenger@yahoo.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kjwenger/Pickle/issues"
+  },
+  "homepage": "https://github.com/kjwenger/Pickle#readme"
+}
