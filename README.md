@@ -5,9 +5,7 @@ Table of Contents:
 <!-- TOC -->
 * [Pickle](#pickle)
   * [Contexts](#contexts)
-    * [PicoContainer](#picocontainer)
-      * [PicoContainer Dependency](#picocontainer-dependency)
-      * [PicoContainer Injection](#picocontainer-injection)
+    * [Contexts for Java](#contexts-for-java)
   * [Preprocessing](#preprocessing)
   * [Variables](#variables)
     * [Simple](#simple)
@@ -26,6 +24,7 @@ Table of Contents:
   * [Futures](#futures)
   * [Languages](#languages)
     * [Kotlin](#kotlin)
+  * [Continuous Integration/Continuous Deployment (CI/CD)](#continuous-integrationcontinuous-deployment--cicd-)
 <!-- TOC -->
 
 # Pickle
@@ -40,66 +39,9 @@ A vastly reusable yet unconstrained *World* should be provided by this project.
 
 It should not be bound to one single instantiation or injection mechanism.
 
-### PicoContainer
-This is the default context injection mechanism of *Cucumber-JVM*.
-
-The provided *World* object can be injected with two simple steps.
-
-#### PicoContainer Dependency
-The dependency to this context mechanism has to be configured in the **POM**. 
-
-The next lines depict how to manage the dependency versioning by **BOM** import.
-
-Adding the actual dependency enables test steps to simply perform
-automatic constructor argument injection of the *World* object.
-
-```xml
-<project>
-    <!-- ... -->
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>io.cucumber</groupId>
-                <artifactId>cucumber-bom</artifactId>
-                <version>7.11.1</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-    <!-- ... -->
-    <dependencies>
-        <!-- ... -->
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-picocontainer</artifactId>
-        </dependency>
-        <!-- ... -->
-    </dependencies>
-    <!-- ... -->
-</project>
-```
-
-#### PicoContainer Injection
-Once the dependency has been added to the project,
-the context is injected at construction-time.
-
-```java
-package pickle.world;
-
-import pickle.World;
-// ...
-public class Steps {
-    private final World world;
-    // ...
-
-    public Steps(final World world) {
-        this.world = world;
-    }
-
-    // ...
-}
-```
+### Contexts for Java
+The provided *World* object for the *JVM* is described in
+[Java#Contexts](./java/README.md#contexts)
 
 ## Preprocessing
 
@@ -154,3 +96,36 @@ This is a {{myAttribute}} template.
 ## Languages
 
 ### Kotlin
+
+## Continuous Integration/Continuous Deployment (CI/CD)
+An easy-to-use and partially free-to-use CI/CD system is
+[CircleCI](https://app.circleci.com/pipelines/github/kjwenger/Pickle).
+
+It connects auto-magically to *GitHub* and provides low-hassle build pipelines.
+
+After registration (best with *GitHub* *OAuth*) and enabling the web hooks,
+all that remains is to check-mark a project for build and provide a **YAML**
+file that is even outlined by the system.
+
+It then only has to be adapted and committed to the project
+as [.circleci/config.yaml](.circleci/config.yml).
+
+```yaml
+version: 2.1
+jobs:
+  build-and-test-java:
+    docker:
+      - image: cimg/openjdk:11.0
+    steps:
+      - checkout
+      - run:
+          name: Build
+          command: mvn --file java --batch-mode --define skipTests clean package
+      - run:
+          name: Test
+          command: mvn --file java --batch-mode integration-test
+workflows:
+  build-and-test:
+    jobs:
+      - build-and-test-java
+```
